@@ -61,7 +61,6 @@ void destuff_array(int in_size, char in_load[in_size], int flag_size, char flag[
 	{
 		index_in = extract_byte(in_size, index_in, in_load, byte);
 		index_in --;
-		printf("%s\n", byte);
 		if(str_comp(9, esc, byte))
 		{
 			continue;
