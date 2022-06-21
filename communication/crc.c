@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-void append(int in1_size, char string1[in1_size], int in2_size,
+append(int in1_size, char string1[in1_size], int in2_size,
             char string2[in2_size], 
             char out_string[(in1_size+in2_size)])
 {
@@ -18,18 +18,19 @@ void append(int in1_size, char string1[in1_size], int in2_size,
         out_index ++;
         in_index ++;
     }
+    out_string[out_index] = '\0';
 }
 
 int extract(int in_size, int index, char load[in_size], 
-            int div_size, char extract[div_size])
+            int out_size, char extract[out_size])
 {
-	for(int i = 0; i < div_size; i++, index++)
+	for(int i = 0; i < out_size; i++, index++)
 	{
 		byte[i] = load[index];
 		if(load[index] == '\0')
 			return ++index;
 	}
-	byte[div_size] = '\0';
+	byte[out_size] = '\0';
 	return index;
 }
 
@@ -37,8 +38,16 @@ void get_crc(int in_size, char in_load[in_size], int div_size,
              char divisor[div_size], int crc_size, 
              char crc[crc_size])
 {
-    char load[(in_size+div_size)];
+    int index = 0, rem_size = length(div_size, divisor);
+    char load[(in_size+div_size)], rem[rem_size], dividend[rem_size];
     append(in_size, in_load, div_size, divisor, load);
+    
+    while(load[index] = '\0')
+    {
+        extract((in_size+div_size), index, load, rem_size, dividend);
+        divide(rem_size, dividend, divisor, rem);
+        
+    }
 }
 
 int main(void)
